@@ -16,7 +16,7 @@ int main() {
 
         switch (shapeChoice)
         {
-        case 1: 
+        case 1:
         {
             printf_s("Triangle selected.\n");
             int triangleSides[3] = { 0, 0, 0 };
@@ -54,7 +54,7 @@ int main() {
     }
     return 0;
 }
-  
+
 
 void printWelcome() {
     printf_s("\n");
@@ -69,12 +69,15 @@ int printShapeMenu() {
     printf_s("2. Calculate Triangle Angles\n");
     printf_s("0. Exit\n");
 
-	int shapeChoice;
-
-	printf_s("Enter number: ");
-	scanf_s("%1o", &shapeChoice);
-
-	return shapeChoice;
+    int input;
+    int scannedValues;
+    printf("Enter menu option number :\n");
+    do {
+        scannedValues = scanf_s("%i", &input);
+        int buf;
+        while ((buf = getchar()) != '\n' && buf != EOF);
+    } while (scannedValues != 1);
+    return input;
 }
 
 int* getTriangleSides(int* triangleSides) {
@@ -91,13 +94,13 @@ bool Validity(int a, int b, int c) {
 }
 
 void TriangleAngles(int a, int b, int c) {
-  
+
     double angleA, angleB, angleC;
     angleA = acos((b * b + c * c - a * a) / (2.0 * b * c)) * (180.0 / PI);//To calculate angle we use 
-																			  //cos(A) = b^2+c^2-a^2 / 2bc - cosine law
-																			  //and then convert result to degree using
-																			  // 180/PI or 3.14
-																			
+    //cos(A) = b^2+c^2-a^2 / 2bc - cosine law
+    //and then convert result to degree using
+    // 180/PI or 3.14
+
     angleB = acos((a * a + c * c - b * b) / (2.0 * a * c)) * (180.0 / PI);
 
     angleC = 180.0 - angleA - angleB; // Sum of angles in a triangle is 180 degrees
@@ -107,3 +110,4 @@ void TriangleAngles(int a, int b, int c) {
     printf_s("Angle B: %f degrees\n", angleB);
     printf_s("Angle C: %f degrees\n", angleC);
 }
+
