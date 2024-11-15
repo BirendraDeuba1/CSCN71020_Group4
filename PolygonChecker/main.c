@@ -46,12 +46,16 @@ int printShapeMenu() {
 	printf_s("1. Triangle\n");
 	printf_s("0. Exit\n");
 
-	int shapeChoice;
+	int input;
+	int scannedValues;
+	printf("Enter menu option number :\n");
+	do {		
+		scannedValues = scanf_s("%i", &input);
+		int buf;
+		while ((buf = getchar()) != '\n' && buf != EOF);
+	} while (scannedValues != 1);
+	return input;
 
-	printf_s("Enter number: ");
-	scanf_s("%1o", &shapeChoice);
-
-	return shapeChoice;
 }
 
 int* getTriangleSides(int* triangleSides) {
