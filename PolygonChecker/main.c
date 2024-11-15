@@ -19,9 +19,27 @@ int main() {
 			printf_s("Triangle selected.\n");
 			int triangleSides[3] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
-			//printf_s("! %d\n", triangleSidesPtr[0]);
-			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			printf_s("%s\n", result);
+
+            if (isValidTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2])) {
+                printf_s("The sides form a valid triangle.\n");
+            }
+            else {
+                printf_s("The sides do not form a valid triangle.\n");
+            }
+            break;
+        }
+        case 2: {
+            // Calculate and display triangle angles
+            printf_s("Triangle Angle Calculation selected.\n");
+            int triangleSides[3] = { 0, 0, 0 };
+            int* triangleSidesPtr = getTriangleSides(triangleSides);
+
+            if (isValidTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2])) {
+                calculateTriangleAngles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+            }
+            else {
+                printf_s("Cannot calculate angles. The sides do not form a valid triangle.\n");
+            }
 			break;
 		case 0:
 			continueProgram = false;
