@@ -36,7 +36,7 @@ namespace UnitTestForRectangle
 
             int perimeter = calculate_perimeter(length, breadth);
 
-            Assert::AreEqual(60, perimeter); // 2(l+b) = 2(12+5) = 2 * 17 = 34
+            Assert::AreEqual(34, perimeter); // 2(l+b) = 2(12+5) = 2 * 17 = 34
         }
 
 	};
