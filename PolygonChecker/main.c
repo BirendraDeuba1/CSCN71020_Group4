@@ -3,6 +3,7 @@
 #include <math.h>
 #include "main.h"
 #include "triangleSolver.h"
+#include "rectangle.h"
 #define PI 3.14
 
 int side = 0;
