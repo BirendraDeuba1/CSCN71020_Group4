@@ -41,5 +41,32 @@ namespace UnitTestForTriangle
 			char* result = analyzeTriangle(side1, side2, side3);
 			Assert::AreEqual("Equilateral triangle", result);
 		}
+
+		//	Test case for not a triangle(using zero)
+		TEST_METHOD(TestForNotATriangle1) {
+			int side1 = 0;
+			int side2 = 8;
+			int side3 = 8;
+			char* result = analyzeTriangle(side1, side2, side3);
+			Assert::AreEqual("Not a triangle", result);
+		}
+
+		//	Test case for not a triangle(using -negative)
+		TEST_METHOD(TestForNotATriangle2) {
+			int side1 = -8;
+			int side2 = 8;
+			int side3 = 8;
+			char* result = analyzeTriangle(side1, side2, side3);
+			Assert::AreEqual("Not a triangle", result);
+		}
+
+		//	Test case for not a triangle(Triangle inequality viloation)
+		TEST_METHOD(TestForNotATriangle3) {
+			int side1 = 3;
+			int side2 = 4;													// side1 + side2 > side 3  -- false 
+			int side3 = 8;													// side2 + side3 > side 1  -- True 
+			char* result = analyzeTriangle(side1, side2, side3);			// side1 + side3 > side 2  -- True
+			Assert::AreEqual("Not a triangle", result);					//	since condition 1 fails these sides cannot form the triangle
+		}
 	};
 }
