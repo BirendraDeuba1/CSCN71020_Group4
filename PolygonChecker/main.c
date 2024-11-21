@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include <math.h>
 #include "main.h"
 #include "triangleSolver.h"
-#define PI 3.14
 
 int side = 0;
 
@@ -80,34 +78,7 @@ int printShapeMenu() {
     return input;
 }
 
-int* getTriangleSides(int* triangleSides) {
-    printf_s("Enter the three sides of the triangle: ");
-    for (int i = 0; i < 3; i++)
-    {
-        scanf_s("%d", &triangleSides[i]);
-    }
-    return triangleSides;
-}
 
 bool Validity(int a, int b, int c) {
     return (a + b > c) && (a + c > b) && (b + c > a);
 }
-
-void TriangleAngles(int a, int b, int c) {
-
-    double angleA, angleB, angleC;
-    angleA = acos((b * b + c * c - a * a) / (2.0 * b * c)) * (180.0 / PI);//To calculate angle we use 
-    //cos(A) = b^2+c^2-a^2 / 2bc - cosine law
-    //and then convert result to degree using
-    // 180/PI or 3.14
-
-    angleB = acos((a * a + c * c - b * b) / (2.0 * a * c)) * (180.0 / PI);
-
-    angleC = 180.0 - angleA - angleB; // Sum of angles in a triangle is 180 degrees
-
-    printf_s("The angles of the triangle are:\n");
-    printf_s("Angle A: %f degrees\n", angleA);
-    printf_s("Angle B: %f degrees\n", angleB);
-    printf_s("Angle C: %f degrees\n", angleC);
-}
-
