@@ -31,8 +31,20 @@ int main() {
             int triangleSides[3] = { 0, 0, 0 };
             int* triangleSidesPtr = getTriangleSides(triangleSides);
 
+            // This one check for the valitdity of the triangle
             if (Validity(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2])) {
-                TriangleAngles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+                double angleA, angleB, angleC;
+                bool anglesCalculated = TriangleAngles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2], &angleA, &angleB, &angleC);
+
+                if (anglesCalculated) {
+                    printf_s("The angles of the triangle are:\n");
+                    printf_s("Angle A: %lf degrees\n", angleA);
+                    printf_s("Angle B: %lf degrees\n", angleB);
+                    printf_s("Angle C: %lf degrees\n", angleC);
+                }
+                else {
+                    printf_s("Error while calulating the angle of traingle.\n");
+                }
             }
             else {
                 printf_s("Cannot calculate angles. The sides do not form a valid triangle.\n");
@@ -81,3 +93,5 @@ int printShapeMenu() {
 bool Validity(int a, int b, int c) {
     return (a + b > c) && (a + c > b) && (b + c > a);
 }
+
+

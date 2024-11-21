@@ -6,4 +6,4 @@ char* analyzeTriangle(int side1, int side2, int side3);
 
 int* getTriangleSides(int* triangleSides);
 
-void TriangleAngles(int a, int b, int c);
+bool TriangleAngles(int a, int b, int c, double* angleA, double* angleB, double* angleC); //make in changes in this file too 
