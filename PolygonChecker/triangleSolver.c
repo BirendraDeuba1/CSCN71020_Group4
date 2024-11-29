@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include "triangleSolver.h"
-#include "main.h"			//included this so we can access the validity function
+
 
 // implementation of triangle file
 #define PI 3.14159265358979323846			// this is more accurate for PI value to get accurate angle for traingle
@@ -19,7 +19,7 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 	else if (side1 == side2 && side1 == side3) {
 		result = "Equilateral triangle";
 	}
-	else if ((side1 == side2 && side1 != side3) || 
+	else if ((side1 == side2 && side1 != side3) ||
 		(side1 == side3 && side1 != side2))
 	{
 		result = "Isosceles triangle";
@@ -59,4 +59,14 @@ int* getTriangleSides(int* triangleSides) {
 		scanf_s("%d", &triangleSides[i]);
 	}
 	return triangleSides;
+}
+
+bool Validity(int a, int b, int c) {
+	if (a <= 0 || b <= 0 || c <= 0) {
+		return false;
+	}
+	if ((a + b <= c) || (a + c <= b) || (b + c <= a)) {
+		return false;
+	}
+	return true;
 }
