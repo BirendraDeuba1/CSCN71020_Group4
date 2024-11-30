@@ -43,6 +43,11 @@ int is_rectangle(double points[4][2]) {
     double side3 = distance(points[2][0], points[2][1], points[3][0], points[3][1]);
     double side4 = distance(points[3][0], points[3][1], points[0][0], points[0][1]);
 
+    // Check for degenerate rectangle (if any side has zero length)
+    if (side1 == 0 || side2 == 0 || side3 == 0 || side4 == 0) {
+        return 0;  // Not a valid rectangle
+    }
+
     // Check for opposite sides being equal (necessary condition for rectangle)
     if (!(side1 == side3 && side2 == side4)) {
         return 0;  // Not a rectangle
