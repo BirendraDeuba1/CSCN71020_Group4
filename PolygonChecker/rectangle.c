@@ -10,14 +10,13 @@ double calculate_area(double points[4][2]) {
 }
     // Function to calculate perimeter based on the four points (assuming a rectangle)
 double calculate_perimeter(double points[4][2]) {
-        // Calculate lengths of all four sides
+        // Calculate lengths of two adjacent sides.
         double side1 = distance(points[0][0], points[0][1], points[1][0], points[1][1]);
         double side2 = distance(points[1][0], points[1][1], points[2][0], points[2][1]);
-        double side3 = distance(points[2][0], points[2][1], points[3][0], points[3][1]);
-        double side4 = distance(points[3][0], points[3][1], points[0][0], points[0][1]);
+        // i removed side3 , side4 from here since it doesn't affect the calculation for getting the perimeter of rectangle.
 
-        // Perimeter of rectangle = sum of all sides
-        return side1 + side2 + side3 + side4;
+        // Perimeter of rectangle = 2* (l +b) 
+        return 2 * (side1 + side2);
     }
 // Function to calculate the distance between two points
 double distance(double x1, double y1, double x2, double y2) {
@@ -32,7 +31,7 @@ int are_perpendicular(double x1, double y1, double x2, double y2,
     double vector2_y = y4 - y3;
     // Dot product of the vectors (should be 0 for perpendicular lines)
     double dot_product = vector1_x * vector2_x + vector1_y * vector2_y;
-    return (dot_product == 0);
+    return (fabs(dot_product) < 1e-9);  // using a small threshold instead of exact zero
 }
 
 // Function to check if the points form a rectangle
