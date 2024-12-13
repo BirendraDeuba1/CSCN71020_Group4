@@ -64,7 +64,7 @@ int is_rectangle(double points[4][2]) {
         return 1;  // It's a rectangle
     }
 
-    return 1;  // Not a rectangle
+    return 0;  // Not a rectangle
 
 }
 
