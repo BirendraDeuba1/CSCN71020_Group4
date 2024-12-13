@@ -120,7 +120,10 @@ int printShapeMenu() {
         scannedValues = scanf_s("%i", &input);
         int buf;
         while ((buf = getchar()) != '\n' && buf != EOF);
-    } while (scannedValues != 1);
+        if (scannedValues != 1 || input < 0 || input > 3) {
+            printf("Invalid choice. Please enter a number between 0 and 3.\n");
+        }
+    } while (scannedValues != 1 || input < 0 || input > 3);
     return input;
 }
 
